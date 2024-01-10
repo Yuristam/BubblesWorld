@@ -4,9 +4,34 @@ public class World
 {
     public static void DrawWorld()
     {
-        Console.Clear();
+        while (true)
+        {
+            Console.Clear();
+            Console.Write(
+                "Choose color:\r\n" +
+                "1. Random\r\n" +
+                "2. DarkBlue\r\n" +
+                "3. DarkGreen\r\n" +
+                "4. DarkCyan\r\n" +
+                "5. DarkRed\r\n" +
+                "6. DarkMagenta\r\n" +
+                "7. DarkYellow\r\n" +
+                "8. Gray\r\n" +
+                "9. DarkGray\r\n" +
+                "10. Blue\r\n" +
+                "11. Green\r\n" +
+                "12. Cyan\r\n" +
+                "13. Red\r\n" +
+                "14. Magenta\r\n" +
+                "15. Yellow\r\n" +
+                "16. White\r\n" +
+                ">");
 
-        string world = @"                                                                                                                        
+            string userInput = Console.ReadLine().ToLower().Trim();
+
+            Helper.SetChosenColor(userInput);
+
+            string world = @"                                                                                                                        
                                                                                                                         
                                      oooooooooooooooo                                                                   
                        o                  oooooooo                                oooooo                                
@@ -33,25 +58,31 @@ public class World
                               ooo                                                                                       
 ";
 
-        world.ToCharArray();
-        
-        for (int i = 0; i < world.Length; i++)
-        {
-         
-            if (world[i] == ' ')
-            {
-                Console.Write(world[i]);
-            }
-            else
-            {
-                Helper.SetRandomColor();
-                Console.Write(world[i]);
-                Thread.Sleep(5);
-            }
+            world.ToCharArray();
 
-        };
+            Console.Clear();
 
-        Console.ResetColor();
-        Console.ReadKey();
+            for (int i = 0; i < world.Length; i++)
+            {
+
+                if (world[i] == ' ')
+                {
+                    Console.Write(world[i]);
+                }
+                else
+                {
+                    if (userInput == "random")
+                    {
+                        Helper.SetRandomColor();
+                    }
+                    Console.Write(world[i]);
+                    Thread.Sleep(5);
+                }
+
+            };
+
+            Console.ResetColor();
+            Console.ReadKey();
+        }
     }
 }

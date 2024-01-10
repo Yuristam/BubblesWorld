@@ -2,31 +2,19 @@
 
 Console.Title = "World of Bubbles";
 
-if (Console.ReadLine() == "world")
+Console.Write(
+    "Enter the pattern:\r\n" +
+    "1. World Map (type 'world')\r\n" +
+    "2. Bubbles (type whatever you want)\r\n" +
+    ">");
+
+string userInput = Console.ReadLine().ToLower().Trim();
+
+if (userInput == "world")
 {
     World.DrawWorld();
 }
-
 else
 {
-    Console.CursorVisible = false;
-
-    for (int i = 0; i < 3600; i++)
-    {
-        // uncomment below if you want background color to be white
-        //Console.BackgroundColor = ConsoleColor.White;
-        Console.Write(' ');
-    }
-
-    Random rnd = new Random();
-
-    while (true)
-    {
-        Console.SetCursorPosition(rnd.Next(0, 120), rnd.Next(0, 28));
-
-        Helper.SetRandomColor();
-
-        Console.Write('o'); // change the symbol
-        Thread.Sleep(100);  // change the speed
-    }
+    Bubbles.DrawBubbles();
 }
