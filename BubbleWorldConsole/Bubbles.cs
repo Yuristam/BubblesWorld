@@ -1,4 +1,6 @@
-﻿namespace BubbleWorldConsole
+﻿using BubbleWorldConsole.Helpers;
+
+namespace BubbleWorldConsole
 {
     public class Bubbles
     {
@@ -7,6 +9,7 @@
         public static void DrawBubbles()
         {
             Console.CursorVisible = false;
+            Console.Clear();
 
             for (int i = 0; i < 3600; i++)
             {
@@ -16,13 +19,13 @@
             }
 
             while (true)
-            {
+            { 
                 Console.SetCursorPosition(rnd.Next(0, 120), rnd.Next(0, 28));
 
-                Helper.SetRandomColor();
+                ColorHelper.SetRandomColor();
 
                 Console.Write('o'); // change the symbol
-                Thread.Sleep(100);  // change the speed
+                Thread.Sleep(30);  // change the speed
             }
         }
     }

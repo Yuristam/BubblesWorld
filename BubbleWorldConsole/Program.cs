@@ -1,18 +1,19 @@
 ﻿using BubbleWorldConsole;
+using BubbleWorldConsole.Helpers;
 
 Console.Title = "World of Bubbles";
 
 Console.Write(
-    "Enter the pattern:\r\n" +
-    "1. World Map (type 'world')\r\n" +
+    "Enter the drawing pattern:\r\n" +
+    "1. Pattern (type 'pattern')\r\n" +
     "2. Bubbles (type whatever you want)\r\n" +
     ">");
 
 string userInput = Console.ReadLine().ToLower().Trim();
 
-if (userInput == "world")
+if (userInput == "pattern")
 {
-    World.DrawWorld();
+    PatternHelper.DrawChosenPattern(userInput);
 }
 else
 {

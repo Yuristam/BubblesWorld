@@ -1,37 +1,8 @@
-﻿namespace BubbleWorldConsole;
-
-public class World
+﻿namespace BubbleWorldConsole.Patterns
 {
-    public static void DrawWorld()
+    public class Pattern
     {
-        while (true)
-        {
-            Console.Clear();
-            Console.Write(
-                "Choose color:\r\n" +
-                "1. Random\r\n" +
-                "2. DarkBlue\r\n" +
-                "3. DarkGreen\r\n" +
-                "4. DarkCyan\r\n" +
-                "5. DarkRed\r\n" +
-                "6. DarkMagenta\r\n" +
-                "7. DarkYellow\r\n" +
-                "8. Gray\r\n" +
-                "9. DarkGray\r\n" +
-                "10. Blue\r\n" +
-                "11. Green\r\n" +
-                "12. Cyan\r\n" +
-                "13. Red\r\n" +
-                "14. Magenta\r\n" +
-                "15. Yellow\r\n" +
-                "16. White\r\n" +
-                ">");
-
-            string userInput = Console.ReadLine().ToLower().Trim();
-
-            Helper.SetChosenColor(userInput);
-
-            string world = @"                                                                                                                        
+        private const string _worldPattern = @"                                                                                                                        
                                                                                                                         
                                      oooooooooooooooo                                                                   
                        o                  oooooooo                                oooooo                                
@@ -55,34 +26,24 @@ public class World
                              oooooooo                          ooooo                                 ooooooooooooooo    
                              oooooo                                                                           ooo       
                               ooo                                                                                       
-                              ooo                                                                                       
+                              ooo                                                                              oo       
 ";
 
-            world.ToCharArray();
-
+        public static void ChoosePattern(ref string userInput)
+        {
             Console.Clear();
+            Console.Write(
+                "Choose pattern:\r\n" +
+                "1. World\r\n" +
+                "2. Draw your own pattern\r\n" +
+                ">");
 
-            for (int i = 0; i < world.Length; i++)
+            userInput = Console.ReadLine().ToLower().Trim();
+
+            switch (userInput)
             {
-
-                if (world[i] == ' ')
-                {
-                    Console.Write(world[i]);
-                }
-                else
-                {
-                    if (userInput == "random")
-                    {
-                        Helper.SetRandomColor();
-                    }
-                    Console.Write(world[i]);
-                    Thread.Sleep(5);
-                }
-
-            };
-
-            Console.ResetColor();
-            Console.ReadKey();
+                case "world": userInput = _worldPattern; ; break;
+            }
         }
     }
 }
